@@ -5,6 +5,11 @@
     "version": "1.0.0",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EqualMa/unialphabet-lib"
+    },
+    "homepage": "https://github.com/EqualMa/unialphabet-lib",
     "scripts": {
         "test": "node lib/test.js",
         "build": "tsc"
