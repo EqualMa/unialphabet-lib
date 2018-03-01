@@ -1,0 +1,17 @@
+{
+    "name": "unialphabet-lib",
+    "author": "Equal Ma",
+    "description": "lib for processing unicode in js",
+    "version": "1.0.0",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "scripts": {
+        "test": "node dist/test.js",
+        "build": "tsc"
+    },
+    "license": "ISC",
+    "devDependencies": {
+        "tslint": "^5.9.1",
+        "typescript": "^2.7.2"
+    }
+}
