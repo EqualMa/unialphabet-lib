@@ -1,10 +1,10 @@
 declare const unicodeUtils: {
-    getFirstChar(str: any): {};
-    toDec(c: any): any;
-    toHex(c: any): any;
-    fromDec(d: any): string;
-    fromHex(h: any): string;
-    getAllCharsBeteen(start: any, end: any): string;
-    getCharsBetweenInGroup(start: any, end: any, stride?: number): any[];
+    getFirstChar(str: string): string;
+    toDec(char: string): number;
+    toHex(char: string): string;
+    fromDec(dec: string | number): string;
+    fromHex(hex: string): string;
+    getAllCharsBetween(start: number, end: number): string;
+    getCharArraysBetween(start: number, end: number, stride?: number): string[][];
 };
 export { unicodeUtils };

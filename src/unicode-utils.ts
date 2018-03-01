@@ -1,34 +1,34 @@
 const unicodeUtils = {
-    getFirstChar(str) {
+    getFirstChar(str: string): string {
         if (str == undefined || str == null || str == '')
             return null;
         return Array.from(str)[0];
     },
 
-    toDec(c) {
-        if (c == undefined || c == null || c == '') return null;
-        return c.codePointAt(0);
+    toDec(char: string): number {
+        if (char == undefined || char == null || char == '') return null;
+        return char.codePointAt(0);
     },
 
-    toHex(c) {
-        if (c == undefined || c == null || c == '') return null;
+    toHex(char: string): string {
+        if (char == undefined || char == null || char == '') return null;
 
-        return c.codePointAt(0).toString(16);
+        return char.codePointAt(0).toString(16);
     },
 
-    fromDec(d) {
-        if (d == undefined || d == null || d == '') return null;
+    fromDec(dec: number | string): string {
+        if (dec == undefined || dec == null || dec == '') return null;
 
-        return String.fromCodePoint(Number.parseInt(d));
+        return String.fromCodePoint(typeof dec === "number" ? dec : Number.parseInt(dec));
     },
 
-    fromHex(h) {
-        if (h == undefined || h == null || h == '') return null;
+    fromHex(hex: string): string {
+        if (hex == undefined || hex == null || hex == '') return null;
 
-        return String.fromCodePoint(Number.parseInt(h, 16));
+        return String.fromCodePoint(Number.parseInt(hex, 16));
     },
 
-    getAllCharsBeteen(start, end) {
+    getAllCharsBetween(start: number, end: number): string {
         if (start > end) return "";
 
         var a = new Array(end - start);
@@ -40,21 +40,25 @@ const unicodeUtils = {
         return String.fromCodePoint(...a);
     },
 
-    getCharsBetweenInGroup(start, end, stride = 26) {
-        var s = [...unicodeUtils.getAllCharsBeteen(start, end)];
+    getCharArraysBetween(start: number, end: number, stride: number = 0): string[][] {
+        var allChars = [...unicodeUtils.getAllCharsBetween(start, end)];
+
+        let groups: string[][] = [];
+
+        let slc: string[];
 
         let i = 0;
 
-        let sarr = [];
-
-        let slc;
-
-        while ((slc = s.slice(i, i + stride)).length != 0) {
-            sarr.push(slc);
-            i += stride;
+        if (stride === 0) {
+            groups.push(allChars)
+        } else {
+            while ((slc = allChars.slice(i, i + stride)).length != 0) {
+                groups.push(slc);
+                i += stride;
+            }
         }
 
-        return sarr;
+        return groups;
     },
 };
 
